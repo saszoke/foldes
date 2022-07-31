@@ -33,7 +33,7 @@
             <div class="order-lg-last d-flex justify-center justify-lg-space-between mt-md-0 mx-md-0 mb-md-0">
 
                 <div v-for="contactMethod in contactMethods.slice(1,3)" :key="contactMethod.name" class="d-flex justify-space-between my-auto button font-weight-bold custom-border fixedNavButtonWidth" :style="$vuetify.breakpoint.lg || $vuetify.breakpoint.xl ? 'width: auto; letter-spacing: 0.1em; padding: 5px;' : 'width: 140px;'" :class="contactMethod.class4Banner">
-                    <div class="py-2 pl-2" style="color: #BEAF67;" v-text="$vuetify.breakpoint.lg || $vuetify.breakpoint.xl ? contactMethod.meta : contactMethod.name.toUpperCase()"></div>
+                    <div class="py-2 pl-2" style="color: #BEAF67;" v-text="$vuetify.breakpoint.lg || $vuetify.breakpoint.xl ? contactMethod.meta[0] : contactMethod.name.toUpperCase()"></div>
 
                     <div class="ma-0 pa-0">
                         <v-btn icon color="#BEAF67" class="mr-0" :href="contactMethod.href" :target="contactMethod.target">

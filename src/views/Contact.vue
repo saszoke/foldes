@@ -8,14 +8,14 @@
           </div>
       </v-snackbar>
       <v-container class="px-md-5" :style="`max-width: ${dynamicWidth}px`">
-          <h3 class="text-h5 text-md-h4 text-xl-h3 pa-md-2 px-md-0 text-justify" style="color: #BEAF67">Elérhetőségünk</h3>
+          <h3 class="text-h5 text-md-h4 text-xl-h3 pa-md-2 px-md-0 text-justify" style="color: #BEAF67">{{englishOn ? 'Contact' : 'Elérhetőségünk'}}</h3>
       </v-container>
 
       <!-- MARKER eredeti: #0f344f -->
       <v-card flat tile class="white--text text-center ma-0 pa-0" color="#09393d" >
           <v-card-text>
-              <v-btn :x-large="$vuetify.breakpoint.lg || $vuetify.breakpoint.xl ? true : false" v-for="icon in icons" :key="icon" color="#F4E8D2" class="mx-4" icon>
-                  <v-icon> {{ icon }} </v-icon>
+              <v-btn :x-large="$vuetify.breakpoint.lg || $vuetify.breakpoint.xl ? true : false" v-for="social in socials" :key="social[0]" color="#F4E8D2" class="mx-4" icon :href="social[1]">
+                  <v-icon> {{ social[0] }} </v-icon>
               </v-btn>
           </v-card-text>
       </v-card>
@@ -24,7 +24,7 @@
               <AddGoogleMap ref="gmap" />
           </v-card>
       </v-container>
-      <ContactDetails :dynamicWidth="dynamicWidth" :contact="contactMethods" :copyIcon="copyIcon" @childAlert="$emit('childAlert',$event)" @childCall="$emit('childCall', 'tel:+52554442')"/>
+      <ContactDetails :englishOn="englishOn" :dynamicWidth="dynamicWidth" :contact="contactMethods" :copyIcon="copyIcon" @childAlert="$emit('childAlert',$event)" @childCall="$emit('childCall', 'tel:+52554442')"/>
     </v-container>
   </div>
 
@@ -41,20 +41,15 @@ export default {
     ContactDetails,
     AddGoogleMap
   },
-  props: ['contactMethods','copyIcon', 'dynamicWidth'],
+  props: ['contactMethods','copyIcon', 'dynamicWidth', 'englishOn'],
 
   data: ()=>{
     return {
-      
-      social: [
-        {id: 3, name: "watsapp", meta: "https://watsapplink/foldes/", icon: "sample3"},
-        {id: 4, name: "linkedin", meta: "https://linkedin.com/foldes/", icon: "sample4"}
-      ],
       timeout: 1500,
       snackbar : false,
-      icons: [
-          'mdi-facebook',
-          'mdi-linkedin',
+      socials: [
+          ['mdi-facebook','https://www.facebook.com/Földes-Ügyvédi-Iroda-101496635999022'],
+          ['mdi-linkedin','https://www.linkedin.com/company/f%C3%B6ldes-%C3%BCgyv%C3%A9di-iroda']
       ],
       mail: 'mdi-email'
     }

@@ -21,11 +21,11 @@
 
 
         <div>
-          <Home :dynamicWidth="dynamicWidth" />
-          <About :dynamicWidth="dynamicWidth" />
-          <Practices :dynamicWidth="dynamicWidth" />
-          <Associates :dynamicWidth="dynamicWidth" />
-          <Contact ref="contact" :contactMethods="contactMethods" :dynamicWidth="dynamicWidth" :copyIcon="copyIcon" @childAlert="flashAlert($event)"/>
+          <Home :dynamicWidth="dynamicWidth" :englishOn="englishOn"/>
+          <About :dynamicWidth="dynamicWidth" :englishOn="englishOn"/>
+          <Practices :dynamicWidth="dynamicWidth" :englishOn="englishOn"/>
+          <Associates :dynamicWidth="dynamicWidth" :englishOn="englishOn"/>
+          <Contact ref="contact" :englishOn="englishOn" :contactMethods="contactMethods" :dynamicWidth="dynamicWidth" :copyIcon="copyIcon" @childAlert="flashAlert($event)"/>
         </div>
       </v-container>
     </v-main>
@@ -50,9 +50,9 @@ export default {
   data: function () {
       return {
         contactMethods: [
-          {name: "address", href: '', target: '', meta: "4025 Debrecen 43 Piac street", icon: "map-marker-outline", customClass: '', color: '#F4E8D2', class4Banner: '', align: '', contactStyle: 'd-md-flex mr-md-15'},
-          {name: "phone", href: 'tel:+52342821', target: '_blank', meta: "+52 342 821", icon: 'phone-outline', customClass: 'custom-border button', color: '#BEAF67', class4Banner: 'mr-3 mr-md-10 mr-lg-15 px-0', align: 'custom-border button mx-md-15', contactStyle: 'd-flex custom-border button mr-md-15'},
-          {name: "email", href: 'mailto:foldest@t-online.hu', target: '_blank', meta: "foldest@t-online.hu", icon: "email-outline", customClass: '', color: '#F4E8D2', class4Banner: 'mx-0 px-0', align: '', contactStyle: 'd-md-flex mr-md-15'},
+          {name: "address", href: '', target: '', meta: ["4025 Debrecen 43 Piac street", "4025 Debrecen Piac utca 43"], icon: "map-marker-outline", customClass: '', color: '#F4E8D2', class4Banner: '', align: '', contactStyle: 'd-md-flex mr-md-15'},
+          {name: "phone", href: 'tel:+52342821', target: '_blank', meta: ["+52 342 821", "+52 342 821"], icon: 'phone-outline', customClass: 'custom-border button', color: '#BEAF67', class4Banner: 'mr-3 mr-md-10 mr-lg-15 px-0', align: 'custom-border button mx-md-15', contactStyle: 'd-flex custom-border button mr-md-15'},
+          {name: "email", href: 'mailto:foldest@t-online.hu', target: '_blank', meta: ["foldest@t-online.hu", "foldest@t-online.hu"], icon: "email-outline", customClass: '', color: '#F4E8D2', class4Banner: 'mx-0 px-0', align: '', contactStyle: 'd-md-flex mr-md-15'},
         ],
         dynamicSubtitle : ['Law Office','Ügyvédi Iroda'],
         dynamicAddress : ['5 Piac street 4024 Debrecen', '4024 Debrecen Piac utca 5'],
@@ -70,20 +70,20 @@ export default {
           {dynamicName: ['Home','Kezdőoldal'], hasSubMenu: false, id: 0, url: '/home', goto: { el: '#home', offset: this.getOffset("main"), duration: 1500 } },
           {dynamicName: ['About','Rólunk'], hasSubMenu: false, id: 1, url: '/about', goto: { el: '#about', offset: this.getOffset("main"), duration: 1500 }},
           {
-            dynamicName: ['Practies','Szakterületeink'], 
+            dynamicName: ['Our Focus','Szakterületeink'], 
             hasSubMenu: true, 
             subMenus: [
-              {name: 'Cégjog', goto: { el: '#cegjog', offset: this.getOffset("sub"), duration: 1500 }}, 
-              {name: 'Gazdasági ügyek', goto: { el: '#gazdjog', offset: this.getOffset("sub"), duration: 1500 }}, 
-              {name: 'Ingatlan ügyek', goto: { el: '#ingatlanjog', offset: this.getOffset("sub"), duration: 1500 }}, 
-              {name: 'Civil szervezetek', goto: { el: '#civiljog', offset: this.getOffset("sub"), duration: 1500 }}, 
-              {name: 'Védjegy ügyek', goto: { el: '#vedjog', offset: this.getOffset("sub"), duration: 1500 }} 
+              {dynamicName: ['Cégjog','Company Law'], goto: { el: '#cegjog', offset: this.getOffset("sub"), duration: 1500 }}, 
+              {dynamicName: ['Gazdasági ügyek', 'Business Law'], goto: { el: '#gazdjog', offset: this.getOffset("sub"), duration: 1500 }}, 
+              {dynamicName: ['Ingatlan ügyek', 'Real Estate'], goto: { el: '#ingatlanjog', offset: this.getOffset("sub"), duration: 1500 }}, 
+              {dynamicName: ['Civil szervezetek', 'Estabilishment of Civil Organisations'], goto: { el: '#civiljog', offset: this.getOffset("sub"), duration: 1500 }}, 
+              {dynamicName: ['Védjegy ügyek', 'Trademark Law'], goto: { el: '#vedjog', offset: this.getOffset("sub"), duration: 1500 }} 
             ],
             id: 2, 
             url: '/practices', 
             goto: { el: '#practices', offset: this.getOffset("main"), duration: 1500 }
           },
-          {dynamicName: ['Lawyers','Munkatársaink'], hasSubMenu: false, id: 3, url: '/associates', goto: { el: '#associates', offset: this.getOffset("main"), duration: 1500 }},
+          {dynamicName: ['Our Team','Munkatársaink'], hasSubMenu: false, id: 3, url: '/associates', goto: { el: '#associates', offset: this.getOffset("main"), duration: 1500 }},
           {dynamicName: ['Contact','Kapcsolat'], hasSubMenu: false, id: 4, url: '/contact', goto: { el: '#contact', offset: this.getOffset("main"), duration: 1500 }}
           ],
         drawer: false,
@@ -306,5 +306,9 @@ input:checked + .slider:before {
 
 .v-banner--is-mobile.v-banner--sticky{
   top: -0.5px !important;
+}
+
+.v-list-item__title, .v-list-item__subtitle{
+  white-space: normal;
 }
 </style>

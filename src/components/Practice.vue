@@ -4,7 +4,7 @@
         :style="$vuetify.breakpoint.xs ? 'width: 300px; height: auto;' : 'height: auto;'"
         >
         <!-- MARKER -->
-        <div class="text-start subtitle-1 font-weight-bold button mainTitle" v-text="speciality.mainTheme"></div>
+        <div class="text-start subtitle-1 font-weight-bold button mainTitle"> {{ englishOn ? speciality.mainTheme[1] : speciality.mainTheme[0]}}</div>
 
         <v-row>
             <v-col v-for="subtitle in speciality.subThemes" :key="subtitle.title" cols="12" sm="6" md="4">
@@ -14,7 +14,7 @@
                     </v-col>
                     <v-col cols="10">
                         <!-- MARKER -->
-                        <div class="body-2 text-lg-body-2 text-left mt-0" v-text="subtitle.title" style="color: #09393d;"></div>
+                        <div class="body-2 text-lg-body-2 text-left mt-0" v-text="englishOn ? subtitle.dynamicTitle[1] : subtitle.dynamicTitle[0]" style="color: #09393d;"></div>
                     </v-col>
                 </v-row>
             </v-col>
@@ -25,7 +25,7 @@
 <script>
 export default {
     name: 'Practice',
-    props: ['speciality'],
+    props: ['speciality', 'englishOn'],
     data: ()=>{
         return {}
     }

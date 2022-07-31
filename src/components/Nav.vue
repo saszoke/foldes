@@ -10,11 +10,11 @@
                         <v-list-group append-icon="" v-else no-action class="font-weight-bold body-2 accent--text" @click.stop="">
                             <template v-slot:activator>
                                 <v-list-item-content>
-                                    <v-list-item-title class="accent--text">{{ englishOn ? item.dynamicName[0] : item.dynamicName[1] }}</v-list-item-title>
+                                    <v-list-item-title class="font-weight-bold body-2 accent--text">{{ englishOn ? item.dynamicName[0] : item.dynamicName[1] }}</v-list-item-title>
                                 </v-list-item-content>
                             </template>
                             <v-list-item v-for="(subMenu,i) in item.subMenus" :key="i" @click.stop="drawer = !drawer">
-                                <v-list-item-title class="font-weight-bold body-2 accent--text" v-scroll-to="subMenu.goto">{{subMenu.name}}</v-list-item-title>
+                                <v-list-item-title class="font-weight-bold body-2 accent--text" v-scroll-to="subMenu.goto">{{ englishOn ? subMenu.dynamicName[1] : subMenu.dynamicName[0] }}</v-list-item-title>
                             </v-list-item>
                         </v-list-group>
                     </div>
@@ -22,10 +22,10 @@
             </div>
 
             <div class="lighten-4" :style='`background-color: #F4E8D2;`' :class="$vuetify.breakpoint.height > 720 ? 'oneThird':'py-7'">
-                <div v-for="contactMethod in contactMethods" :key="contactMethod.meta">
+                <div v-for="contactMethod in contactMethods" :key="contactMethod.meta[1]">
                     <div style="background-color: background-color: #F4E8D2">
                         <div class="d-flex flex-column justify-space-between">
-                            <div class="py-2 mr-2 body-2 button" style="color: #09393d; font-weight: bold;">{{ contactMethod.meta }}</div>
+                            <div class="py-2 mr-2 body-2 button" style="color: #09393d; font-weight: bold;">{{ englishOn ? contactMethod.meta[0] : contactMethod.meta[1] }}</div>
                             <div>
                                 <v-btn icon style="color: #09393d; font-weight: bold;" @click="$emit('scroll2map',contactMethod.name)" :href="contactMethod.href" :target="contactMethod.target">
                                     <v-icon> mdi-{{ contactMethod.icon }} </v-icon>
