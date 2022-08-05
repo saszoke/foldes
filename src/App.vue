@@ -275,6 +275,7 @@ input:checked + .slider:before {
 /* Rounded sliders */
 .slider.round {
   border-radius: 34px;
+  display: flex;
 }
 
 .slider.round:before {
@@ -286,6 +287,16 @@ input:checked + .slider:before {
   padding: 12.5%;
   height: 100%;
   color:#115874;
+  padding-left: 5px !important;
+
+}
+
+.switchHU{
+  text-align: start !important;;
+  padding: 12.5% !important;
+  height: 100% !important;
+  color:#115874 !important;
+  padding-right: 0 !important;
 }
 
 .contained{

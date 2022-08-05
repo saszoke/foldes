@@ -16,10 +16,13 @@
                 </div>
                 
 
-                <div class=" mx-md-15 py-auto my-auto order-md-1 d-md-none">
+                <div class="align-self-end mx-md-15 py-auto my-auto order-md-1 d-md-none">
                 <label class="switch">
                     <input type="checkbox"  @click="$emit('langSwitch')">
                     <span class="slider round">
+                    <div class="switchHU text-body-2 font-weight-bold">
+                    HU
+                    </div>
                     <div class="switchText text-body-2 font-weight-bold">
                     EN
                     </div>
@@ -31,24 +34,27 @@
 
             <!-- SECOND CHILD BANNER -->
             <div class="order-lg-last d-flex justify-center justify-lg-space-between mt-md-0 mx-md-0 mb-md-0">
-
-                <div v-for="contactMethod in contactMethods.slice(1,3)" :key="contactMethod.name" class="d-flex justify-space-between my-auto button font-weight-bold custom-border fixedNavButtonWidth" :style="$vuetify.breakpoint.lg || $vuetify.breakpoint.xl ? 'width: auto; letter-spacing: 0.1em; padding: 5px;' : 'width: 140px;'" :class="contactMethod.class4Banner">
-                    <div class="py-2 pl-2" style="color: #BEAF67;" v-text="$vuetify.breakpoint.lg || $vuetify.breakpoint.xl ? contactMethod.meta[0] : contactMethod.name.toUpperCase()"></div>
-
-                    <div class="ma-0 pa-0">
-                        <v-btn icon color="#BEAF67" class="mr-0" :href="contactMethod.href" :target="contactMethod.target">
-                            <v-icon> mdi-{{contactMethod.icon}} </v-icon>
-                        </v-btn>
-                        <v-btn icon color="#BEAF67" class="mr-0" @click="$emit('childAlert',contactMethod.name)">
-                            <v-icon class="copy">{{copyIcon}}</v-icon>
-                        </v-btn>
+                    <div v-for="contactMethod in contactMethods.slice(1,3)" :key="contactMethod.name" class="d-flex justify-space-between my-auto button font-weight-bold custom-border fixedNavButtonWidth" :style="$vuetify.breakpoint.lg || $vuetify.breakpoint.xl ? 'width: auto; letter-spacing: 0.1em; padding: 5px;' : 'width: 140px;'" :class="contactMethod.class4Banner">
+                        <div class="py-2 pl-2" style="color: #BEAF67;" v-text="$vuetify.breakpoint.lg || $vuetify.breakpoint.xl ? contactMethod.meta[0] : contactMethod.name.toUpperCase()"></div>
+    
+                        <div class="ma-0 pa-0">
+                            <v-btn icon color="#BEAF67" class="mr-0" :href="contactMethod.href" :target="contactMethod.target">
+                                <v-icon> mdi-{{contactMethod.icon}} </v-icon>
+                            </v-btn>
+                            <v-btn icon color="#BEAF67" class="mr-0" @click="$emit('childAlert',contactMethod.name)">
+                                <v-icon class="copy">{{copyIcon}}</v-icon>
+                            </v-btn>
+                        </div>
                     </div>
-                </div>
 
-                <div class=" mx-md-15 py-auto my-auto order-md-1 d-none d-md-flex">
+
+                <div class="align-self-end mx-md-15 py-auto my-auto order-md-1 d-none d-md-flex">
                 <label class="switch">
                     <input type="checkbox"  @click="$emit('langSwitch')">
                     <span class="slider round">
+                    <div class="switchHU text-body-2 font-weight-bold">
+                    HU
+                    </div>
                     <div class="switchText text-body-2 font-weight-bold">
                     EN
                     </div>
